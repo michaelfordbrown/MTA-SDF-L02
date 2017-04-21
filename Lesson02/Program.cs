@@ -8,36 +8,14 @@ namespace Lesson02
 {
     class Rectangle
     {
-        private double length;
-        private double width;
 
-        /*  no validation checks */
-        public double Length
-        {
-            get
-            {
-                return length;
-            }
-            set
-            {
-                length = value;
-            }
-        }
-        public double Width
-        {
-            get
-            {
-                return width;
-            }
-            set
-            {
-                width = value;
-            }
-        }
-        
+        /*  Simplified syntax for auto-implemented properties */
+        public double Length { get; set; }
+        public double Width { get; set; }
+               
         public double GetArea()
         {
-            return length * width;
+            return Length * Width;
         }
     }
     class Program
