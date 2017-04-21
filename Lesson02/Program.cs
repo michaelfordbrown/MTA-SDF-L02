@@ -10,6 +10,8 @@ namespace Lesson02
     {
         private double length;
         private double width;
+
+        /*  no validation checks */
         public double Length
         {
             get
@@ -18,8 +20,7 @@ namespace Lesson02
             }
             set
             {
-                if (value > 0.0)
-                    length = value;
+                length = value;
             }
         }
         public double Width
@@ -30,11 +31,10 @@ namespace Lesson02
             }
             set
             {
-                if (value > 0.0)
-                    width = value;
+                width = value;
             }
         }
-
+        
         public double GetArea()
         {
             return length * width;
@@ -44,11 +44,8 @@ namespace Lesson02
     {
         static void Main(string[] args)
         {
-            Rectangle rect = new Rectangle();
-            rect.Length = 10.0;
-            rect.Width = 20.0;
-            double area = rect.GetArea();
-            Console.WriteLine("Area of Rectangle: {0}", area);
+            Rectangle rect = new Rectangle { Length = 10.0, Width = 20.0 };
+            Console.WriteLine("Area of Rectangle: {0}", rect.GetArea());
         }
     }
 }
