@@ -2,11 +2,11 @@
 
 namespace Lesson02
 {
-
-    class Polygon
+    abstract class Polygon
     {
         public double Length { get; protected set; }
         public double Width { get; protected set; }
+        abstract public double GetArea();
     }
 
     class Rectangle : Polygon
@@ -16,7 +16,7 @@ namespace Lesson02
             Length = length;
             Width = width;
         }
-        public double GetArea()
+        public override double GetArea()
         {
             return Width * Length;
         }
