@@ -8,22 +8,34 @@ namespace Lesson02
 {
     class Rectangle
     {
-
-        /*  Simplified syntax for auto-implemented properties */
-        public double Length { get; set; }
-        public double Width { get; set; }
-               
-        public double GetArea()
+        public event EventHandler Changed;
+        private double length;
+        public double Length
         {
-            return Length * Width;
+            get
+            {
+                return length;
+            }
+            set
+            {
+                length = value;
+                Changed(this, EventArgs.Empty);
+            }
         }
     }
     class Program
     {
         static void Main(string[] args)
         {
-            Rectangle rect = new Rectangle { Length = 10.0, Width = 20.0 };
-            Console.WriteLine("Area of Rectangle: {0}", rect.GetArea());
+            Rectangle r = new Rectangle();
+            r.Changed += new EventHandler(r_Changed);
+            r.Length = 10;
+        }
+
+        static void r_Changed(object sender, EventArgs e)
+        {
+            Rectangle r = (Rectangle)sender;
+            Console.WriteLine("Value Changed: Length {0}", r.Length);
         }
     }
 }
