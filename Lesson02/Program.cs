@@ -1,36 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Lesson02
 {
-    abstract class Polygon
+    class Polygon
     {
-        public double Length { get; protected set; }
-        public double Width { get; protected set; }
-        abstract public double GetArea();
+        public virtual void Draw()
+        {
+            Console.WriteLine("Drawing: Polygon");
+        }
     }
 
     class Rectangle : Polygon
     {
-        public Rectangle(double length, double width)
+        public override void Draw()
         {
-            Length = length;
-            Width = width;
-        }
-        public override double GetArea()
-        {
-            return Width * Length;
+            Console.WriteLine("Drawing: Rectangle");
         }
     }
-
+    class Triangle : Polygon
+    {
+        public override void Draw()
+        {
+            base.Draw();
+            {
+                Console.WriteLine("Drawing: Triangle");
+            }
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
 
-            Rectangle rect = new Rectangle(10, 20);
-            Console.WriteLine(
-                "Width={0}, Length={1}, Area={2}",
-                rect.Width, rect.Length, rect.GetArea());
+            List<Polygon> polygons = new List<Polygon>();
+            polygons.Add(new Polygon());
+            polygons.Add(new Rectangle());
+            polygons.Add(new Triangle());
+
+            foreach (Polygon p in polygons)
+            {
+                p.Draw();
+            }
         }
 
     }
